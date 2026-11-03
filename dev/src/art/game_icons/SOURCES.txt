@@ -1,0 +1,22 @@
+The game's own icons, cut from the local Helldivers 2 data files (read only). They belong to the game's owners.
+id | source archive | resource hash | how the match is known
+icons/credit      | 6a3eecfddce28fe8 | 9414ab4f02745820 | hash named by Th3chef's Treasure Radar GAME_ICONS
+icons/medal       | 6a3eecfddce28fe8 | 980cf7bb9ce23913 | same
+icons/requisition | 6a3eecfddce28fe8 | 89d9a4e1eddb5c0a | same
+icons/common      | 6a3eecfddce28fe8 | 5d9cd53cc1d3c44c | same
+icons/rare        | 6a3eecfddce28fe8 | 1ff270be2076cca6 | same
+icons/super       | 6a3eecfddce28fe8 | 8d99a7a7ee0d21cc | same
+icons/ammo        | 033fd51c0660afa2 | 7615d6a35c657087 | same
+icons/grenade     | 033fd51c0660afa2 | 4c3bef8bc16021c9 | same
+icons/stim        | 033fd51c0660afa2 | 93b43ada76587340 | same
+map/objective     | 033fd51c0660afa2 | 230be372b3e9baac | game path content/ui/mission/hud/misc/objective_primary
+map/poi           | 033fd51c0660afa2 | c3b2ab7493b774d7 | game path content/ui/mission/hud/map/map_unknown
+map/illuminate    | 6a3eecfddce28fe8 | 39b278e635929e71 | game path content/ui/shared/faction/faction_logo_illuminate
+map/done          | 6a3eecfddce28fe8 | 17f1486bab23f78d | by eye: plain check mark
+map/cross         | 6a3eecfddce28fe8 | cf70aac2ef16b2be | by eye: plain cross
+map/extract       | 6a3eecfddce28fe8 | 857aea964cef7224 | by eye: game art, nothing confirms the game's map uses it for this
+map/silo          | 033fd51c0660afa2 | 983847701fa9b29f | by eye: same
+map/tower         | 6a3eecfddce28fe8 | aa2d4939420bc14a | by eye: same
+map/outpost       | 8bb19e255ed514d5 | 09d943afb4fc73af | by eye: same
+map/nest          | 8bb19e255ed514d5 | 55eb53b11e014e48 | by eye: same
+map/side has no game icon found; it stays the drawn one from map_icons.py.

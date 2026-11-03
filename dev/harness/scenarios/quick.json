@@ -1,0 +1,20 @@
+{
+  "notes": "A short mission at 1080p written as JSON: each key is a Scenario method (see README). Lists of lists or objects call the method once per item.",
+  "screen": [1920, 1080],
+  "run": {"seconds": 9, "fps": 30},
+  "kind": {"name": "example_structure", "units": "00000000deadbeef", "group": "structure"},
+  "world": [{"name": "mission", "at": 0, "filler": 5200, "seed": 5}],
+  "unit": [
+    ["medal", 10, 30],
+    ["rare", -20, 40],
+    ["common", 30, 70, 0, 3],
+    {"kind": "super", "x": 15, "y": 22, "pickup_at": 6.0, "label": "the super sample"},
+    {"kind": "requisition", "x": 90, "y": -40},
+    {"kind": "ammo", "x": 4, "y": 12},
+    {"kind": "example_structure", "x": -30, "y": 60}
+  ],
+  "camera": [[0, 0, 0, 1.8, 0, -5], [9, 0, 0, 1.8, 45, -5]],
+  "press": [["f8", 7.0]],
+  "map_open": [[7.5, 8.5]],
+  "render_frames": ["4s", "6.5s", "8s"]
+}

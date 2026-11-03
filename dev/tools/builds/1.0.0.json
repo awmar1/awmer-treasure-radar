@@ -1,0 +1,734 @@
+{
+ "schema": "treasure-radar-build/1",
+ "comment": "1.0.0: from 0.9.3. Icons no longer stay away: the census has no upper end (25868 units was 'not measured'), is re-read until it stops growing and piles past 300 m make a map big; notches within 0.3 s of a step are ignored as the game ignores them; a level still unsure after 0.8 s draws at -1. Map Icon Opacity, World Pin Opacity, Closer Zooms Helper (the mod's folder holds the companion, started once with the game).",
+ "version": "1.0.0",
+ "mod": "mods/chef/treasure_radar",
+ "title": "Treasure Radar",
+ "manifest": {
+  "//": "its own Guid and Name, not 0.5.1's: HD2ModManager finds mods by Guid (with 0.5.1 still installed it deployed 0.5.1 for a ticked 0.6.0) and stores them in a folder named after Name, so a name of its own keeps clear of other authors' Treasure Radar 0.6.0. The title (in the addon and the log) stays Treasure Radar",
+  "set": {
+   "Version": 1,
+   "IconPath": "thumbnail.png",
+   "Guid": "ec5c1172-7d28-4bfd-866a-ff8513bf408a",
+   "Name": "Awmer Treasure Radar {version}",
+   "Description": "Loot, objectives and structures on the game's own map in the game's own style, at all three zoom levels, with a legend of what's left; a small radar while the map is closed, the nearest valuables on the compass and pins over loot near you. Tick it and play, at any resolution. The whole map needs nothing else; the two closer zooms use a small helper program in the mod's folder that starts with the game and can be turned off in the options. Has its own loader built in (log: treasure_radar.log in %LOCALAPPDATA%), so don't use it with another mod that replaces boot, or with another Awmer Treasure Radar build. Based on Treasure Radar by Th3chef."
+  },
+  "options": [
+   {
+    "Name": "Awmer Treasure Radar",
+    "Image": "images/core.png",
+    "Include": [
+     "core"
+    ],
+    "Description": "Everything is on with good defaults: loot, objectives and structures on the game's map (Tab) at all three zoom levels, with a legend of what's left; a small radar in the corner while the map is closed, the nearest valuables on the game's compass, pins over loot near you, and a ping helper. Keep this ticked; the boxes and lists below only change a default. Keys: F7 hides or shows the mod, Numpad 1 sets or clears a waypoint of your own on what you look at, Numpad 3 clears them."
+   },
+   {
+    "Name": "Outside the Map",
+    "Image": "images/mode.png",
+    "Include": [],
+    "Description": "What the mod shows while the game's map is closed. The map's own icons and the legend stay.",
+    "SubOptions": [
+     {
+      "Name": "Radar, compass pips and pins (default)",
+      "Description": "The corner radar, the nearest valuables on the compass and pins over loot near you.",
+      "Image": "images/mode_all.png",
+      "Include": [
+       "mode_all"
+      ]
+     },
+     {
+      "Name": "Compass pips and pins, no corner radar",
+      "Description": "No radar in the corner; the compass pips and pins stay.",
+      "Image": "images/mode_no_radar.png",
+      "Include": [
+       "mode_no_radar"
+      ]
+     },
+     {
+      "Name": "Nothing: the map only",
+      "Description": "No radar, no compass pips, no pins: only the icons on the open map.",
+      "Image": "images/mode_map_only.png",
+      "Include": [
+       "mode_map_only"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Legend",
+    "Image": "images/legend.png",
+    "Include": [],
+    "Description": "The panel of what's left (each type and how many), beside the open map.",
+    "SubOptions": [
+     {
+      "Name": "While the map is open (default)",
+      "Description": "Beside the open map only.",
+      "Image": "images/legend_map.png",
+      "Include": [
+       "legend_map"
+      ]
+     },
+     {
+      "Name": "Always",
+      "Description": "Also while the map is closed, left of the corner radar (where it sits beside the map when the radar is off). F7 hides it with the rest.",
+      "Image": "images/legend_always.png",
+      "Include": [
+       "legend_always"
+      ]
+     },
+     {
+      "Name": "Off",
+      "Description": "No legend.",
+      "Image": "images/legend_off.png",
+      "Include": [
+       "legend_off"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Loot: Super Credits",
+    "Image": "images/credit.png",
+    "Include": [
+     "credit"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Medals",
+    "Image": "images/medal.png",
+    "Include": [
+     "medal"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Common Samples",
+    "Image": "images/common.png",
+    "Include": [
+     "common"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Rare Samples",
+    "Image": "images/rare.png",
+    "Include": [
+     "rare"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Super Samples",
+    "Image": "images/super.png",
+    "Include": [
+     "super"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Requisition Slips",
+    "Image": "images/requisition.png",
+    "Include": [
+     "requisition"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Ammo",
+    "Image": "images/ammo.png",
+    "Include": [
+     "ammo"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Grenades",
+    "Image": "images/grenade.png",
+    "Include": [
+     "grenade"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Loot: Stims",
+    "Image": "images/stim.png",
+    "Include": [
+     "stim"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Map: Objectives",
+    "Image": "images/map_objective.png",
+    "Include": [
+     "map_objective"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Map: Side Objectives",
+    "Image": "images/map_side.png",
+    "Include": [
+     "map_side"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Map: Nests",
+    "Image": "images/map_nest.png",
+    "Include": [
+     "map_nest"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Map: Enemy Structures",
+    "Image": "images/map_structure.png",
+    "Include": [
+     "map_structure"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Map: Caches and Points of Interest",
+    "Image": "images/map_poi.png",
+    "Include": [
+     "map_poi"
+    ],
+    "Description": "Tick the types you want on the map, the radar, the compass and the pins. With none of the Loot boxes ticked, all loot shows; the same for the Map boxes."
+   },
+   {
+    "Name": "Corner Radar Size",
+    "Image": "images/radar.png",
+    "Include": [],
+    "Description": "The size of the small radar in the bottom right while the game's map is closed (Outside the Map turns it off).",
+    "SubOptions": [
+     {
+      "Name": "Medium (default)",
+      "Description": "At 75% of the game's map circle.",
+      "Image": "images/radar_medium.png",
+      "Include": [
+       "radar_medium"
+      ]
+     },
+     {
+      "Name": "Large",
+      "Description": "As big as the game's map circle.",
+      "Image": "images/radar_large.png",
+      "Include": [
+       "radar_large"
+      ]
+     },
+     {
+      "Name": "Small",
+      "Description": "At 60%.",
+      "Image": "images/radar_small.png",
+      "Include": [
+       "radar_small"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Radar Facing",
+    "Image": "images/rotate.png",
+    "Include": [],
+    "Description": "Whether the radar turns with you or keeps north up.",
+    "SubOptions": [
+     {
+      "Name": "Turns With Me (default)",
+      "Description": "What you face is always up: the radar turns as you turn.",
+      "Image": "images/rotate.png",
+      "Include": [
+       "facing_turn"
+      ]
+     },
+     {
+      "Name": "North Up",
+      "Description": "North stays at the top and your view cone turns inside the radar (0.7.0's radar).",
+      "Image": "images/north.png",
+      "Include": [
+       "facing_north"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "World Pins",
+    "Image": "images/markers.png",
+    "Include": [],
+    "Description": "A pin over each pickup near you, like the game's pings: its icon and how far it is.",
+    "SubOptions": [
+     {
+      "Name": "50 m (default)",
+      "Description": "Pins on pickups within 50 m.",
+      "Image": "images/markers_50.png",
+      "Include": [
+       "markers_50"
+      ]
+     },
+     {
+      "Name": "25 m",
+      "Description": "Pins on pickups within 25 m.",
+      "Image": "images/markers_25.png",
+      "Include": [
+       "markers_25"
+      ]
+     },
+     {
+      "Name": "100 m",
+      "Description": "Pins on pickups within 100 m.",
+      "Image": "images/markers_100.png",
+      "Include": [
+       "markers_100"
+      ]
+     },
+     {
+      "Name": "Off",
+      "Description": "No pins in the world.",
+      "Image": "images/markers_off.png",
+      "Include": [
+       "markers_off"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Panel Opacity",
+    "Image": "images/opacity.png",
+    "Include": [],
+    "Description": "How solid the radar's disc and the mod's panels are. Without a pick, the game's own HUD Background Opacity.",
+    "SubOptions": [
+     {
+      "Name": "100%",
+      "Description": "The radar's disc and the mod's panels at 100%.",
+      "Image": "images/opacity_100.png",
+      "Include": [
+       "opacity_100"
+      ]
+     },
+     {
+      "Name": "75%",
+      "Description": "The radar's disc and the mod's panels at 75%.",
+      "Image": "images/opacity_75.png",
+      "Include": [
+       "opacity_75"
+      ]
+     },
+     {
+      "Name": "50%",
+      "Description": "The radar's disc and the mod's panels at 50%.",
+      "Image": "images/opacity_50.png",
+      "Include": [
+       "opacity_50"
+      ]
+     },
+     {
+      "Name": "25%",
+      "Description": "The radar's disc and the mod's panels at 25%.",
+      "Image": "images/opacity_25.png",
+      "Include": [
+       "opacity_25"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Map Icon Opacity",
+    "Image": "images/map_opacity.png",
+    "Include": [],
+    "Description": "How solid the mod's icons, rings and arrows are on the open map. The legend stays as it is.",
+    "SubOptions": [
+     {
+      "Name": "100%",
+      "Description": "The mod's icons on the open map at 100%.",
+      "Image": "images/map_opacity_100.png",
+      "Include": [
+       "map_opacity_100"
+      ]
+     },
+     {
+      "Name": "75%",
+      "Description": "The mod's icons on the open map at 75%.",
+      "Image": "images/map_opacity_75.png",
+      "Include": [
+       "map_opacity_75"
+      ]
+     },
+     {
+      "Name": "50%",
+      "Description": "The mod's icons on the open map at 50%.",
+      "Image": "images/map_opacity_50.png",
+      "Include": [
+       "map_opacity_50"
+      ]
+     },
+     {
+      "Name": "25%",
+      "Description": "The mod's icons on the open map at 25%.",
+      "Image": "images/map_opacity_25.png",
+      "Include": [
+       "map_opacity_25"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "World Pin Opacity",
+    "Image": "images/marker_opacity.png",
+    "Include": [],
+    "Description": "How solid the pins over loot and over your waypoints are in the world.",
+    "SubOptions": [
+     {
+      "Name": "100%",
+      "Description": "The pins in the world at 100%.",
+      "Image": "images/marker_opacity_100.png",
+      "Include": [
+       "marker_opacity_100"
+      ]
+     },
+     {
+      "Name": "75%",
+      "Description": "The pins in the world at 75%.",
+      "Image": "images/marker_opacity_75.png",
+      "Include": [
+       "marker_opacity_75"
+      ]
+     },
+     {
+      "Name": "50%",
+      "Description": "The pins in the world at 50%.",
+      "Image": "images/marker_opacity_50.png",
+      "Include": [
+       "marker_opacity_50"
+      ]
+     },
+     {
+      "Name": "25%",
+      "Description": "The pins in the world at 25%.",
+      "Image": "images/marker_opacity_25.png",
+      "Include": [
+       "marker_opacity_25"
+      ]
+     }
+    ]
+   },
+   {
+    "Name": "Closer Zooms Helper",
+    "Image": "images/helper.png",
+    "Include": [],
+    "Description": "The icons at the two closer map zooms need to know where the game's map is looking, which the game doesn't tell mods. For that the mod starts a small program from its own folder when the game starts. It reads the map from the game's window, keeps everything on this PC, sends nothing anywhere, and exits with the game. Off, the icons show on the whole map only, as exact as ever.",
+    "SubOptions": [
+     {
+      "Name": "Start it with the game",
+      "Image": "images/helper_auto.png",
+      "Include": [
+       "helper_auto"
+      ],
+      "Description": "Default. Starts the small program from the mod's folder once per game run; it reads the map from the game's window, stays on this PC and exits with the game."
+     },
+     {
+      "Name": "Off: whole map only",
+      "Image": "images/helper_off.png",
+      "Include": [
+       "helper_off"
+      ],
+      "Description": "Starts nothing. The mod's icons show with the map zoomed all the way out."
+     }
+    ]
+   }
+  ]
+ },
+ "files": {
+  "images": "../../src/images",
+  "thumbnail.png": "../../src/images/thumbnail.png",
+  "companion/TreasureRadarCompanion.exe": "../../build/companion/TreasureRadarCompanion.exe"
+ },
+ "options": {
+  "core": [
+   {
+    "kind": "loader",
+    "file": "../../reference/0.5.1/loader.lua",
+    "set": {
+     "LOADER": "{title} {version}: Chef Loader"
+    },
+    "replace": [
+     [
+      "-- Treasure Radar 0.5.1: its built-in loader",
+      "-- {title} {version}: its built-in loader",
+      1
+     ]
+    ]
+   },
+   {
+    "kind": "bundle",
+    "modules": "../../src/addon/modules.txt",
+    "textures": "../../src/textures"
+   },
+   {
+    "kind": "options",
+    "value": "{ core = true, mod_folder = \"Awmer Treasure Radar {version}\" }",
+    "comment": "core sets no feature key, so the picks' keys (mode, legend, kinds, map_kinds, radar, ...) win in any deploy order"
+   }
+  ],
+  "mode_all": [
+   {
+    "kind": "options",
+    "value": "{ mode = 'all' }"
+   }
+  ],
+  "mode_no_radar": [
+   {
+    "kind": "options",
+    "value": "{ mode = 'no_radar' }"
+   }
+  ],
+  "mode_map_only": [
+   {
+    "kind": "options",
+    "value": "{ mode = 'map_only' }"
+   }
+  ],
+  "legend_map": [
+   {
+    "kind": "options",
+    "value": "{ legend = 'map' }"
+   }
+  ],
+  "legend_always": [
+   {
+    "kind": "options",
+    "value": "{ legend = 'always' }"
+   }
+  ],
+  "legend_off": [
+   {
+    "kind": "options",
+    "value": "{ legend = 'off' }"
+   }
+  ],
+  "credit": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { credit = true } }"
+   }
+  ],
+  "medal": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { medal = true } }"
+   }
+  ],
+  "common": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { common = true } }"
+   }
+  ],
+  "rare": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { rare = true } }"
+   }
+  ],
+  "super": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { super = true } }"
+   }
+  ],
+  "requisition": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { requisition = true } }"
+   }
+  ],
+  "ammo": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { ammo = true } }"
+   }
+  ],
+  "grenade": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { grenade = true } }"
+   }
+  ],
+  "stim": [
+   {
+    "kind": "options",
+    "value": "{ kinds = { stim = true } }"
+   }
+  ],
+  "map_objective": [
+   {
+    "kind": "options",
+    "value": "{ map_kinds = { objective = true, extract = true } }"
+   }
+  ],
+  "map_side": [
+   {
+    "kind": "options",
+    "value": "{ map_kinds = { side_objective = true } }"
+   }
+  ],
+  "map_nest": [
+   {
+    "kind": "options",
+    "value": "{ map_kinds = { nest = true } }"
+   }
+  ],
+  "map_structure": [
+   {
+    "kind": "options",
+    "value": "{ map_kinds = { structure = true } }"
+   }
+  ],
+  "map_poi": [
+   {
+    "kind": "options",
+    "value": "{ map_kinds = { poi = true } }"
+   }
+  ],
+  "radar_medium": [
+   {
+    "kind": "options",
+    "value": "{ radar = 'medium' }"
+   }
+  ],
+  "radar_large": [
+   {
+    "kind": "options",
+    "value": "{ radar = 'large' }"
+   }
+  ],
+  "radar_small": [
+   {
+    "kind": "options",
+    "value": "{ radar = 'small' }"
+   }
+  ],
+  "facing_turn": [
+   {
+    "kind": "options",
+    "value": "{ rotate = true }"
+   }
+  ],
+  "facing_north": [
+   {
+    "kind": "options",
+    "value": "{ rotate = false }"
+   }
+  ],
+  "markers_50": [
+   {
+    "kind": "options",
+    "value": "{ markers = 50 }"
+   }
+  ],
+  "markers_25": [
+   {
+    "kind": "options",
+    "value": "{ markers = 25 }"
+   }
+  ],
+  "markers_100": [
+   {
+    "kind": "options",
+    "value": "{ markers = 100 }"
+   }
+  ],
+  "markers_off": [
+   {
+    "kind": "options",
+    "value": "{ markers = 0 }"
+   }
+  ],
+  "opacity_100": [
+   {
+    "kind": "options",
+    "value": "{ opacity = 1.00 }"
+   }
+  ],
+  "opacity_75": [
+   {
+    "kind": "options",
+    "value": "{ opacity = 0.75 }"
+   }
+  ],
+  "opacity_50": [
+   {
+    "kind": "options",
+    "value": "{ opacity = 0.50 }"
+   }
+  ],
+  "opacity_25": [
+   {
+    "kind": "options",
+    "value": "{ opacity = 0.25 }"
+   }
+  ],
+  "map_opacity_100": [
+   {
+    "kind": "options",
+    "value": "{ map_opacity = 1 }"
+   }
+  ],
+  "marker_opacity_100": [
+   {
+    "kind": "options",
+    "value": "{ marker_opacity = 1 }"
+   }
+  ],
+  "map_opacity_75": [
+   {
+    "kind": "options",
+    "value": "{ map_opacity = 0.75 }"
+   }
+  ],
+  "marker_opacity_75": [
+   {
+    "kind": "options",
+    "value": "{ marker_opacity = 0.75 }"
+   }
+  ],
+  "map_opacity_50": [
+   {
+    "kind": "options",
+    "value": "{ map_opacity = 0.5 }"
+   }
+  ],
+  "marker_opacity_50": [
+   {
+    "kind": "options",
+    "value": "{ marker_opacity = 0.5 }"
+   }
+  ],
+  "map_opacity_25": [
+   {
+    "kind": "options",
+    "value": "{ map_opacity = 0.25 }"
+   }
+  ],
+  "marker_opacity_25": [
+   {
+    "kind": "options",
+    "value": "{ marker_opacity = 0.25 }"
+   }
+  ],
+  "helper_auto": [
+   {
+    "kind": "options",
+    "value": "{ helper = 'auto' }"
+   }
+  ],
+  "helper_off": [
+   {
+    "kind": "options",
+    "value": "{ helper = 'off' }"
+   }
+  ]
+ }
+}

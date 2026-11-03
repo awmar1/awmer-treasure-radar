@@ -1,0 +1,19 @@
+# Bundle order (dev/tools/bundle.py). A module may read T.mod.<x> at load time only if x comes earlier.
+config
+glyphs
+structures
+kinds
+draw
+ui
+hud
+mapview
+view
+track
+objectives
+pings
+markers
+radar
+legend
+compass
+overlay
+main

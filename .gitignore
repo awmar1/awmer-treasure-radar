@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+dev/build/
+dev/out/
+dev/harness/out/
+dev/tools/_pylib/
